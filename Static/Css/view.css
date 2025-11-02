@@ -1,0 +1,98 @@
+.navbar{
+    width: 100%;
+    height: 50px;
+    /* padding-top: 56px; */
+    background-color:  #2980b9;
+    display: flex;  
+    gap: 100px;                                                                             
+
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding-left: 40px;
+    margin-top: 16px;
+    
+    
+}
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 20px;
+    }
+    h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Summary cards */
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        .card h3 {
+            margin: 10px 0;
+            color: #007bff;
+        }
+        .card p {
+            font-size: 18px;
+            color: #555;
+        }
+        .card1 {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 25%;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+        }
+
+        .card1:hover {
+            background-color:rgb(190, 143, 54);
+        }
+        .card2 {
+            background-color:white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 25%;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+        }
+        .card2:hover {
+            background-color:rgb(187, 187, 60);
+        }
+        .card3 {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 25%;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+            
+        }
+        .card3:hover {
+            background-color:lightgreen;
+        }
+        .navbar{
+            width: 100%;
+            height: 50px;
+            /* padding-top: 56px; */
+            background-color:  #2980b9;
+            display: flex;
+            gap: 100px;
+        }
+        body{
+            margin: 0;
+        }
+        .navbar a{
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            padding-left: 40px;
+            margin-top: 16px;
+            
+            
+        }
