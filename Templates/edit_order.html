@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Order</title>
+    <style>
+        form{
+            border-radius: 10px;
+            width: 400px;
+            height: 60vh;
+            padding-left: 32px;
+            padding-top: 30px;
+            margin: auto;
+             box-shadow: rgba(102, 96, 96, 0.35) 0px 5px 15px;
+             font-size: 24px;
+        }
+        label{
+            font-size: 16px;
+            /* padding-left: 40px; */
+        }
+        h2{
+            text-align: center;
+        }
+        select, option{
+            width: 350px;
+            height: 25px;
+        }
+        button{
+            width: 150px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: blue;
+            color: white;
+            border: solid blue 1px;
+            /* margin-left: 32px; */
+        }
+        a{
+            font-size: 16px;
+            text-decoration: none;
+            border: solid blue 2px;
+            padding: 4px;
+            color: white;
+            background-color: blue;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+        input{
+            width: 350px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>EDIT ORDER</h2>
+    <form action="/orders/update/{{ order[0] }}" method="POST">
+        <label>Name:</label><br>
+        <input type="text" name="name" value="{{ order[1] }}" required><br><br>
+
+        <label>Category:</label><br>
+        <select name="category" required>
+            <option value="Computer" {% if order[2]=='Computer' %}selected{% endif %}>Computer</option>
+            <option value="Camera" {% if order[2]=='Camera' %}selected{% endif %}>Camera</option>
+            <option value="Smartphone" {% if order[2]=='Smartphone' %}selected{% endif %}>Smartphone</option>
+            <option value="Smart home" {% if order[2]=='Smart home' %}selected{% endif %}>Smart Home</option>
+        </select><br><br>
+
+        <label>Stock:</label><br>
+        <input type="number" name="stock" value="{{ order[3] }}" required><br><br>
+
+        <label>Status:</label><br>
+        <select name="status" required>
+            <option value="Waiting" {% if order[4]=='Waiting' %}selected{% endif %}>Pending</option>
+            <option value="Complete" {% if order[4]=='Complete' %}selected{% endif %}>Complete</option>
+        </select><br><br>
+
+        <button type="submit">Update</button>
+        <a href="/orders">Cancel</a>
+    </form>
+</body>
+</html>
