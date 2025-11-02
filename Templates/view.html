@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/static/css/view.css">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+</head>
+<body>
+     <div class="contrainer">
+     <div class="navbar">
+            <a href="/people"><i class="fas fa-tachometer-alt mr-2"></i>Team</a>
+            <a href="/orders"> <i class="fas fa-shopping-cart mr-2"></i>Orders</a>
+            <a href="/products"> <i class="fas fa-plus mr-2"></i>Product</a>
+            <a href="http://127.0.0.1:5000/view"><i class="fas fa-chart-bar mr-2"></i>Reports</a>
+            <a href="/profile"><i class="fa-solid fa-user"></i>Profile</a>
+        </div>
+        
+    </div>
+    <h2>PRODUCTS DASHBOARD</h2>
+
+    <!-- Summary Cards -->
+    <div class="cards">
+        <div class="card1">
+            <p>Total Products</p>
+            <h3>{{ total_products }}</h3>
+        </div>
+        <div class="card2">
+            <p>Total Stock</p>
+            <h3>{{ total_stock }}</h3>
+        </div>
+        <div class="card3">
+            <p>Total Value</p>
+            <h3>${{ total_value }}</h3>
+        </div>
+    </div>
+
+    <!-- Dynamic Table -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#productsTable').DataTable({
+                "pageLength": 10,
+                "lengthMenu": [5, 10, 25, 50],
+                "order": [[0, "desc"]]
+            });
+        }); 
+    </script>
+    <!DOCTYPE html>
+    <title>View Products</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            max-width: 600px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+    </style>
+</head>
+<body>
+<h2 style="text-align:center;">Total Quantity by Category</h2>
+
+<div style="width: 50%; float: left; text-align:center;">
+    <h3>Bar Chart</h3>
+    <canvas id="quantityChart" width="400" height="300"></canvas>
+</div>
+
+<div style="width: 50%; float: left; text-align:center;">
+    <h3>Pie Chart</h3>
+    <canvas id="pieChart" width="300" height="250"></canvas>
+</div>
+
+<div style="clear: both; text-align:center;">
+    <p id="total" style="font-weight:bold; font-size:18px;"></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    fetch('/category_quantity')
+        .then(response => response.json())
+        .then(data => {
+            // Convert to numbers in case they are strings
+            const quantities = data.quantities.map(Number);
+            const total = quantities.reduce((a, b) => a + b, 0);
+            document.getElementById('total').innerText = 'Total: ' + total;
+
+            // Bar Chart
+            const barCtx = document.getElementById('quantityChart').getContext('2d');
+            new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: data.categories,
+                    datasets: [{
+                        label: 'Total Quantity',
+                        data: quantities,
+                        backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0']
+                    }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+
+            // Pie Chart
+            const pieCtx = document.getElementById('pieChart').getContext('2d');
+            new Chart(pieCtx, {
+                type: 'pie',
+                data: {
+                    labels: data.categories,
+                    datasets: [{
+                        data: quantities,
+                        backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0']
+                    }]
+                },
+                options: { plugins: { legend: { position: 'right' } } }
+            });
+        });
+</script>
+</body>
+</html> 
+
+
