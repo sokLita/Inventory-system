@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/css/product_list.css">
+<link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+<html>
+
+<head>
+    <title>Products</title>
+
+</head>
+
+<body>
+    <div class="contrainer">
+        <div class="navbar">
+            <a href="/people"><i class="fas fa-tachometer-alt mr-2"></i>Team</a>
+            <a href="/orders"> <i class="fas fa-shopping-cart mr-2"></i>Orders</a>
+            <a href="/products"> <i class="fas fa-plus mr-2"></i>Product</a>
+            <a href="http://127.0.0.1:5000/view"><i class="fas fa-chart-bar mr-2"></i>Reports</a>
+            <a href="/profile"><i class="fa-solid fa-user"></i>Profile</a>
+        </div>
+
+    </div><br>
+
+    <h2>LIST PRODUCTS</h2><br>
+    <div class="link">
+        <div class="Addproduct">
+            <a href="/products/add">Add New Product</a>
+        </div>
+        <div class="search">
+            <form method="get" action="/products">
+                <input type="text" name="search" placeholder="Name product, category" value="{{ search or '' }}" >
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </div>
+        <div class="download">
+            <a href="{{ url_for('download_excel') }}" class="btn btn-success">
+                <i class="fa-solid fa-file-excel"></i> Download Excel
+            </a>
+            <a href="{{ url_for('download_pdf') }}" class="btn btn-danger">
+                <i class="fa-solid fa-file-pdf"></i> Download PDF
+            </a>
+
+        </div>
+
+
+
+    </div><br><br>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+        {% for p in products %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{ p[1] }}</td>
+            <td>{{ p[2] }}</td>
+            <td>{{ p[3] }}</td>
+            <td>{{ p[4] }}</td>
+            <td>
+                <a href="/products/edit/{{p[0]}}" class="btn_edit">Edit</a>
+                <a href="/products/delete/{{ p[0] }}" 
+                    class="btn_delete" 
+                    onclick="return confirm('Are you sure you want to delete this product?');">
+                    Delete
+                    </a>
+                <a href="/products/view/{{p[0]}}" class="btn_view">View</a>
+            </td>
+            <!-- <td>{{ p[5] }}</td> -->
+        </tr>
+
+        </tr>
+        </tr>
+        {% endfor %}
+    </table>
+  
+</body>
+
+</html>
