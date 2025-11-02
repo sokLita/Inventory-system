@@ -1,0 +1,12 @@
+Flask==2.3.4
+Flask-MySQLdb==1.0.1
+mysqlclient==2.3.1
+pandas==2.1.1
+reportlab==4.0.3
+Werkzeug==2.3.4
+app.py is a Flask app
+MySQL to store users and products
+Flask-MySQLdb depends on this to communicate with your database.
+Pandas to manage product data and maybe export to Excel or JSON
+app can generate PDF reports of products
+Flask uses it internally.
