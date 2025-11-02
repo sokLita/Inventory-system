@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ person.name }} - Details</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* ✅ make items stack vertically */
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* ✅ full screen height */
+            margin: 0;
+            background-color: #f4f6f8;
+            font-family: Arial, sans-serif;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 350px;
+            text-align: left;
+        }
+
+        .profile-card h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .profile-card p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .profile-card p strong {
+            color: #000;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+            width: 180px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-card">
+        <h2>{{ person.name }}</h2>
+        <p><strong>Sex:</strong> {{ person.sex }}</p>
+        <p><strong>Phone:</strong> {{ person.phone }}</p>
+        <p><strong>Gmail:</strong> {{ person.gmail }}</p>
+        <p><strong>Position:</strong> {{ person.position }}</p>
+
+        <a href="/people" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to List
+        </a>
+    </div>
+</body>
+
+</html>
