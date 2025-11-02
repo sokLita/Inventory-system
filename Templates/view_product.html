@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Product</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            width: 250px;
+            padding-left: 40px;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        .btn-back:hover {
+            background: #0056b3;
+        }
+      
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>DETAILS PRODUCT</h2>
+        <table>
+            <!-- <tr>
+                <th>ID</th>
+                <td>{{ product.id }}</td>
+            </tr> -->
+            <tr>
+                <th>Name</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ product.category }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>${{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ product.stock }}</td>
+            </tr>
+            <tr>
+                <th>Date </th>
+                <td>{{ product.date }}</td>
+            </tr>
+            
+        </table>
+        
+        <a href="/products" class="btn-back">Back to Product List</a>
+    </div>
+</body>
+</html>
