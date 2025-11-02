@@ -1,0 +1,50 @@
+h2{
+    text-align: center;
+}
+form{
+    width: 400px;
+    height: 80vh;
+    padding-left: 120px;
+    padding-top:24px ;
+    margin: auto;
+    box-shadow: rgba(102, 96, 96, 0.35) 0px 5px 15px;
+}
+
+button{
+    width: 250px;
+    height: 35px;
+    border-radius: 5px;
+    border: solid white 1px;
+    background-color: blue;
+    color: white;
+
+}
+.google-btn{
+    width: 250px;
+    height: 45px;
+    align-items: center;
+    display: flex;
+    gap: 24px;
+}
+input{
+    width: 240px;
+    height: 30px;
+    border-radius: 5px;
+    border: solid rgb(192, 172, 172) 1px;
+
+}
+
+.or-divider,span{
+    padding-left: 56px;
+}
+.google-btn p{
+    text-align: center;
+}
+.google-btn img{
+    margin-left: 16px;
+}
+.background img{
+    width: 150px;
+    height: 150px;
+    margin-left:50px;
+}
