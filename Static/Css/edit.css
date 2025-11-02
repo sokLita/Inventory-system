@@ -1,0 +1,54 @@
+.edit{
+    background-color:white;
+    width: 450px;
+    padding: 8px;
+    /* margin-left: 400px; */
+    margin: auto;
+    border-radius: 10px;
+    height: 78vh;
+     box-shadow: rgba(102, 96, 96, 0.35) 0px 5px 15px;
+    
+    
+}
+.edit h1{
+    text-align: center;
+}
+form{
+    padding-left: 30px;
+    font-size: 18px;
+
+    
+}
+
+p a{
+    text-decoration: none;
+    padding-left: 150px;
+   
+}
+.background{
+    height: 90vh;
+    padding-top: 32px;
+    /* background-color:rgba(0, 0, 255, 0.589) ; */
+   
+}
+input{
+    width: 350px;
+    height: 30px;
+    /* border-radius: 5px; */
+    border: solid black 1px;
+
+   
+
+}
+.up input{
+    width: 200px;
+    height: 38px;
+    background-color: rgba(0, 0, 255, 0.589);
+    /* margin-left: 50px; */
+    margin-top: 24px;
+    border: solid white ;
+}
+.up input:hover{
+    background-color: BLUE;
+    color: white;
+}
