@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Person</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 500px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-left: 500px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #2980b9;
+            text-decoration: none;
+            text-align: center;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    
+    </style>
+</head>
+<body>
+    <h1>ADD NEW PEOPLE</h1>
+
+    <form action="/add_person" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="sex">Sex:</label>
+        <select name="sex" id="sex" required>
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" id="phone" required>
+
+        <label for="email">Gmail:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="position">Position:</label>
+        <input type="text" name="position" id="position" required>
+
+        <button type="submit">Add Person</button>
+    </form>
+
+    <a href="/people">Back to People List</a>
+</body>
+</html>
+
