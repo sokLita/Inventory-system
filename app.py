@@ -57,6 +57,7 @@ def product_list():
     return render_template('product_list.html', products=products, search=search)
 
 
+# app product
 @app.route('/products/add', methods=['GET','POST'])
 def add_product():
     if request.method == 'POST':
@@ -72,7 +73,7 @@ def add_product():
         return redirect(url_for('product_list'))
     return render_template('add.html')
 
-
+# edit product
 @app.route('/products/edit/<int:id>', methods=['GET','POST'])
 def edit_product(id):
     cur = mysql.connection.cursor()
@@ -91,7 +92,7 @@ def edit_product(id):
     cur.close()
     return render_template('edit.html', product=product)
 
-
+# delete product
 @app.route('/products/delete/<int:id>')
 def delete_product(id):
     cur = mysql.connection.cursor()
@@ -100,7 +101,7 @@ def delete_product(id):
     cur.close()
     return redirect(url_for('product_list'))
 
-
+# view product
 @app.route('/products/view/<int:id>')
 def view_product(id):
     cur = mysql.connection.cursor()
@@ -120,7 +121,7 @@ def view_product(id):
     }
     return render_template('view_product.html', product=product_data)
 
-
+# report
 @app.route('/view')
 def view():
     cur = mysql.connection.cursor()
@@ -139,7 +140,7 @@ def view():
                            total_stock=total_stock,
                            total_value=total_value)
 
-
+# show about graph
 @app.route('/category_quantity')
 def category_quantity():
     cur = mysql.connection.cursor()
@@ -150,7 +151,7 @@ def category_quantity():
     quantities = [row[1] for row in data]
     return jsonify({'categories': categories, 'quantities': quantities})
 
-
+# download excel
 @app.route('/download/excel')
 def download_excel():
     cur = mysql.connection.cursor()
@@ -168,6 +169,7 @@ def download_excel():
     return send_file(output, download_name="products.xlsx", as_attachment=True,
                      mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
+# download pdf
 @app.route('/download/pdf')
 def download_pdf():
     cur = mysql.connection.cursor()
@@ -215,6 +217,7 @@ def people_list():
     return render_template('about.html', people=people)
 
 
+# profile
 @app.route('/profile')
 def profile():
     # Prefer session values to avoid querying columns that may not exist in DB
@@ -239,6 +242,7 @@ def profile():
     return render_template('profile.html', user=user)
 
 
+# add people
 @app.route('/add')
 def add_person_form():
     return render_template('add_people.html')
@@ -258,6 +262,7 @@ def add_person():
     return redirect(url_for('people_list'))
 
 
+# delete people
 @app.route('/delete_person/<int:id>', methods=['POST'])
 def delete_person(id):
     cur = mysql.connection.cursor()
@@ -267,6 +272,7 @@ def delete_person(id):
     return redirect(url_for('people_list'))
 
 
+# view people
 @app.route('/person/<int:id>')
 def view_person(id):
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -293,6 +299,7 @@ def orders_list():
     return render_template('orders.html', orders=orders, filter_status=filter_status)
 
 
+# delete order
 @app.route('/orders/delete/<int:id>')
 def delete_order(id):
     cur = mysql.connection.cursor()
@@ -302,6 +309,7 @@ def delete_order(id):
     return redirect(url_for('orders_list'))
 
 
+# edit order
 @app.route('/orders/edit/<int:id>')
 def edit_order(id):
     cur = mysql.connection.cursor()
@@ -310,7 +318,7 @@ def edit_order(id):
     cur.close()
     return render_template('edit_order.html', order=order)
 
-
+# update order
 @app.route('/orders/update/<int:id>', methods=['POST'])
 def update_order(id):
     name = request.form['name']
