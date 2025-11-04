@@ -1,27 +1,17 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Product Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="/static/css/view.css">
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Orders Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <style>
         .navbar {
             width: 100%;
             height: 50px;
-            /* padding-top: 56px; */
             background-color: #2980b9;
             display: flex;
             gap: 100px;
-        }
-        h2{
-            text-align: center;
-            /* font-size: 32px; */
         }
         .navbar a {
             text-decoration: none;
@@ -30,29 +20,24 @@
             padding-left: 40px;
             margin-top: 16px;
         }
-
+        h2 {
+            text-align: center;
+        }
         table {
             width: 100%;
             text-align: center;
-            height: 30px;
-            border: none;
             border-collapse: collapse;
         }
-
         tr th {
             background-color: #2586c6;
             height: 50px;
             color: white;
             border: solid white 1px;
-            margin: 0px;
         }
-
         tr td {
             height: 50px;
-            /* width: 30px; */
             border: solid black 1px;
         }
-
         .btn_edit {
             background-color: blue;
             color: white;
@@ -61,7 +46,6 @@
             border-radius: 5px;
             text-decoration: none;
         }
-
         .btn_delete {
             background-color: rgb(188, 106, 106);
             color: white;
@@ -70,42 +54,57 @@
             border-radius: 5px;
             text-decoration: none;
         }
-
-        #status_filter,
-        option {
-            /* padding: 8px,16px; */
+        #status_filter {
             width: 100px;
             height: 28px;
             border-radius: 8px;
         }
-
         tr:hover {
             background-color: #a4c2d5;
             cursor: pointer;
             transition: 0.3s;
             color: white;
-
         }
+        .link a{
+            border: solid blue 2px;
+            background-color: blue;
+            padding:8px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+          
+        }
+        .link a.active {
+            background-color: #145a86;
+        }
+        select, option{
+            width: 100px;
+            background-color: rgb(87, 182, 87);
+            color: white;
+            height: 30px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
     </style>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
-
 </head>
-
 <body>
     <div class="contrainer">
-       <div class="navbar">
-            <a href="/people"><i class="fas fa-tachometer-alt mr-2"></i>Team</a>
-            <a href="/orders"> <i class="fas fa-shopping-cart mr-2"></i>Orders</a>
-            <a href="/products"> <i class="fas fa-plus mr-2"></i>Product</a>
-            <a href="http://127.0.0.1:5000/view"><i class="fas fa-chart-bar mr-2"></i>Reports</a>
-            <a href="/profile"><i class="fa-solid fa-user"></i>Profile</a>
+        <div class="navbar">
+            <a href="/people"><i class="fas fa-tachometer-alt"></i> Team</a>
+            <a href="/orders"><i class="fas fa-shopping-cart"></i> Orders</a>
+            <a href="/products"><i class="fas fa-plus"></i> Product</a>
+            <a href="/view"><i class="fas fa-chart-bar"></i> Reports</a>
+            <a href="/profile"><i class="fa-solid fa-user"></i> Profile</a>
         </div>
-
     </div>
+
     <h2>ORDERS PRODUCT</h2>
+    <div class="link">
+        <a href="{{ url_for('orders_list') }}" class="{% if not filter_status %}active{% endif %}">All</a>
+    </div><br>
+
+
     <table border="1" cellpadding="5">
         <thead>
             <tr>
@@ -119,33 +118,27 @@
         </thead>
         <tbody>
             {% for order in orders %}
-            <tr>    
+            <tr>
                 <td>{{ order[0] }}</td>
                 <td>{{ order[1] }}</td>
                 <td>{{ order[2] }}</td>
                 <td>{{ order[3] }}</td>
                 <td>
-                    <form action="/orders" method="GET" style="margin-bottom:10px;">
-                        <label for="status_filter"></label>
-                        <select name="status" id="status_filter" onchange="this.form.submit()">
-                            <option value="">All</option>
-                            <option value="Waiting" {% if filter_status=='Waiting' %}selected{% endif %}>Pending
-                            </option>
-                            <option value="Complete" {% if filter_status=='Complete' %}selected{% endif %}>Complete
-                            </option>
+                   <form action="/orders" method="GET">
+                        <select name="stute" onchange="this.form.submit()">
+                            <option value="" {% if not filter_status %}selected{% endif %}>All</option>
+                            <option value="pending" {% if filter_status == 'pending' %}selected{% endif %}>Pending</option>
+                            <option value="complete" {% if filter_status == 'complete' %}selected{% endif %}>Complete</option>
                         </select>
                     </form>
-
                 </td>
                 <td>
                     <a href="/orders/edit/{{ order[0] }}" class="btn_edit">Edit</a>
-                    <a href="/orders/delete/{{ order[0] }}" onclick="return confirm('Are you sure?')"
-                        class="btn_delete">Delete</a>
+                    <a href="/orders/delete/{{ order[0] }}" onclick="return confirm('Are you sure?')" class="btn_delete">Delete</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </body>
-
 </html>

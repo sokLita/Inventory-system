@@ -1,79 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-<head>
-    <meta charset="UTF-8">
-    <title>Admin - Profile</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profile</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-        }
-        
-        .profile-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 350px;
-            text-align: center;
-        }
-
-        .profile-card img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-
-        .profile-card h2 {
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-
-        .profile-card p {
-            margin: 5px 0;
-            color: #333;
-        }
-
-        .back-button,
-        .logout-button {
-            display: block;
-            text-align: center;
-            margin: 15px auto 0 auto;
-            text-decoration: none;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            width: 150px;
-        }
-
-        .back-button:hover,
-        .logout-button:hover {
-            background-color: #0056b3;
-        }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+      }
+      .profile-card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        width: 350px;
+        text-align: center;
+      }
+      .profile-card img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+      }
+      .profile-card h2 {
+        color: #007bff;
+        margin-bottom: 10px;
+      }
+      .profile-card p {
+        margin: 5px 0;
+        color: #333;
+      }
+      .back-button,
+      .logout-button {
+        display: block;
+        text-align: center;
+        margin: 15px auto 0 auto;
+        text-decoration: none;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        width: 150px;
+      }
+      .back-button:hover,
+      .logout-button:hover {
+        background-color: #0056b3;
+      }
     </style>
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="profile-card">
-         <img src="/static/image/image.png" alt="">
-        <h2>Admin</h2>
-        <p><strong>Email:</strong>Admin@gmail.com</p>
-
-        <a href="/people" class="back-button"><i class="fa-solid fa-backward"></i>   Back to List</a>
-        <a href="/" class="logout-button"><i class="fa-solid fa-right-from-bracket"></i>   Log Out</a>
-
-    </div> 
-    
-
-</body>
-
+      <img src="/static/image/image.png" alt="Profile Picture" />
+      <!-- <h2>{{ user.username }}</h2>
+        <p><strong>Email:</strong> {{ user.email }}</p> -->
+      <h2>Admin</h2>
+      <p><strong>Email:</strong>Admin@gmail</p>
+      <a href="{{ url_for('people_list') }}" class="back-button">
+        <i class="fa-solid fa-backward"></i> Back to List
+      </a>
+      <a href="{{ url_for('logout') }}" class="logout-button">
+        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+      </a>
+    </div>
+  </body>
 </html>

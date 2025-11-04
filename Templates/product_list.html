@@ -11,7 +11,6 @@
     <title>Products</title>
 
 </head>
-
 <body>
     <div class="contrainer">
         <div class="navbar">
@@ -21,9 +20,7 @@
             <a href="http://127.0.0.1:5000/view"><i class="fas fa-chart-bar mr-2"></i>Reports</a>
             <a href="/profile"><i class="fa-solid fa-user"></i>Profile</a>
         </div>
-
     </div><br>
-
     <h2>LIST PRODUCTS</h2><br>
     <div class="link">
         <div class="Addproduct">
@@ -41,11 +38,7 @@
             <a href="{{ url_for('download_pdf') }}" class="btn btn-danger">
                 <i class="fa-solid fa-file-pdf"></i> Download PDF
             </a>
-
         </div>
-
-
-
     </div><br><br>
     <table border="1" cellpadding="5">
         <tr>
@@ -72,14 +65,10 @@
                     </a>
                 <a href="/products/view/{{p[0]}}" class="btn_view">View</a>
             </td>
-            <!-- <td>{{ p[5] }}</td> -->
         </tr>
-
         </tr>
         </tr>
         {% endfor %}
     </table>
-  
 </body>
-
 </html>

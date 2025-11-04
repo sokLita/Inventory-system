@@ -51,19 +51,14 @@
 </head>
 <body>
     <h2>EDIT ORDER</h2>
-    <form action="/orders/update/{{ order[0] }}" method="POST">
-        <label>Name:</label><br>
+    <form method="POST">
+        <label>Name:</label>
         <input type="text" name="name" value="{{ order[1] }}" required><br><br>
 
-        <label>Category:</label><br>
-        <select name="category" required>
-            <option value="Computer" {% if order[2]=='Computer' %}selected{% endif %}>Computer</option>
-            <option value="Camera" {% if order[2]=='Camera' %}selected{% endif %}>Camera</option>
-            <option value="Smartphone" {% if order[2]=='Smartphone' %}selected{% endif %}>Smartphone</option>
-            <option value="Smart home" {% if order[2]=='Smart home' %}selected{% endif %}>Smart Home</option>
-        </select><br><br>
+        <label>Category:</label>
+        <input type="text" name="category" value="{{ order[2] }}" required><br><br>
 
-        <label>Stock:</label><br>
+        <label>Stock:</label>
         <input type="number" name="stock" value="{{ order[3] }}" required><br><br>
 
         <label>Status:</label><br>
@@ -73,7 +68,6 @@
         </select><br><br>
 
         <button type="submit">Update</button>
-        <a href="/orders">Cancel</a>
     </form>
 </body>
 </html>

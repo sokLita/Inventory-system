@@ -23,7 +23,6 @@
 
     <h2>PEOPLE LISTS</h2>
     <a href="/add" class="add-button">Add Person</a>
-
     <table border="1" cellpadding="10">
         <tr>
             <th>ID</th>
@@ -34,7 +33,6 @@
             <th>Position</th>
             <th>Action</th>
         </tr>
-
         {% for person in people %}
         <tr>
             <td>{{ loop.index }}</td>
@@ -56,9 +54,7 @@
         </tr>
         {% endfor %}
     </table>
-
     <style>
-      
     </style>
 </body>
 </html>
